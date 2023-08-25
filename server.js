@@ -14,9 +14,6 @@ const db = knex({
     }
 });
 
-db.select("*").from("users").then(data => {
-    console.log(data)
-});
 
 
 const app = express();
@@ -24,31 +21,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors())
 
-const database = {
-    users: [
-        {
-            id: "123",
-            name: "John",
-            email: "john@gmail.com",
-            password: "cookies",
-            entries: 0,
-            joined: new Date()
-        },
-        {
-            id: "124",
-            name: "Sally",
-            email: "sally@gmail.com",
-            password: "bananas",
-            entries: 0,
-            joined: new Date()
-        }
-    ]
-}
-
-
-app.get("/", (req, res) => {
-    res.send(database.users)
-})
 
 app.post("/signin", (req, res) => {
     const {email, name, password} = req.body;
@@ -140,7 +112,7 @@ app.put("/image", (req, res) => {
     
 })
 
-app.listen(3000, () => {
+app.listen("https://myapp-0oja.onrender.com", () => {
     console.log("app is running on port 3000");
 })
 
